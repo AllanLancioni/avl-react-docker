@@ -1,7 +1,7 @@
 import './App.css';
-import Login from './components/Login';
-import InitialPage from './components/InitialPage';
-import Ajuda from './components/Ajuda';
+import Login from './views/Login';
+import InitialPage from './views/Home';
+import Ajuda from './views/Ajuda';
 import Provider from './provider/Provider';
 import { Route } from 'react-router';
 
