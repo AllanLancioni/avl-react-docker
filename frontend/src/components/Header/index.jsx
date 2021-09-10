@@ -2,19 +2,19 @@ import { Link } from "react-router-dom";
 
 import './Header.css';
 
-function Header() {
+export default function Header() {
   return (
-    <nav class="header">
+    <nav className="header">
 
-      <h2 class="brand">TradeMaster</h2>
+      <h2 className="brand">TradeMaster</h2>
 
-      <div class="flex-right">
+      <div className="flex-right">
         <ul>
           <li><Link to="/">Home</Link></li>
           <li><Link to="/ajuda">Ajuda</Link></li>
         </ul>
 
-        <div class="user-info">
+        <div className="user-info">
           <span>email@trademaster.com.br</span>
           <Link to="/login">Sair</Link>
         </div>
@@ -22,5 +22,3 @@ function Header() {
     </nav>
   );
 }
-
-export default Header;

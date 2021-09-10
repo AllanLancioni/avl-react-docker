@@ -1,0 +1,17 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  margin: -5px;
+}
+
+.grid > * {
+  margin: 5px;
+}
+
+.grid *:first-child {
+  background-color: yellow;
+}
+
+.grid *:last-child {
+  background-color: blue;
+}
