@@ -1,13 +1,12 @@
-import context from "./Context";
+// import context from "./Context";
 
-const data = {};
 
-function Provider({ children }) {
-  return(
-    <context.Provider value={data}>
-      { children }
-    </context.Provider>
-  )
-}
+// function Provider({ children }) {
+//   return(
+//     <context.Provider>
+//       { children }
+//     </context.Provider>
+//   )
+// }
 
-export default Provider;
+// export default Provider;

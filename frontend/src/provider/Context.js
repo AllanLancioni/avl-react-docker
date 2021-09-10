@@ -1,5 +1,11 @@
 import { createContext } from "react";
 
-const context = createContext();
+export const data = {
+  number: 1,
+  dataTree: []
+};
 
-export default context;
+
+const Context = createContext(null);
+
+export default Context;

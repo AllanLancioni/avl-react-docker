@@ -6,9 +6,9 @@ import TreeAVL from './TreeAvl';
 import TreeControl from './TreeControl';
 
 function InitialPage() {
-  return(
+  return (
     <div>
-      <Header/>
+      <Header />
       <div className="container">
         <PageTitle>Gerar Árvore AVL</PageTitle>
         <div className="grid">
