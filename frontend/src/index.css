@@ -24,4 +24,17 @@ ul {
 .container {
   max-width: 1024px;
   margin: auto;
+  padding: 0 1rem;
 }
+
+input[type=text],
+input[type=number] {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: .5rem;
+}
+
+input[type=text]:focus-visible,
+input[type=number]:focus-visible {
+  border: 2px solid blue;
+} 
