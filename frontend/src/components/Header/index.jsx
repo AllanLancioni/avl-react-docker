@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
-import './Header.css';
+import './index.css';
 
-export default function Header() {
+function Header() {
   return (
     <nav className="header">
 
@@ -22,3 +22,4 @@ export default function Header() {
     </nav>
   );
 }
+export default Header;

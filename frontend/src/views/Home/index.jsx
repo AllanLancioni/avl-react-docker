@@ -1,7 +1,7 @@
-import Header from '../components/Header';
-import PageTitle from '../components/PageTitle';
+import Header from '../../components/Header';
+import PageTitle from '../../components/PageTitle';
 
-import './Home.css';
+import './index.css';
 
 function InitialPage() {
   return(

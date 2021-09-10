@@ -1,5 +1,7 @@
-import './PageTitle.css';
+import './index.css';
 
-export default function PageTitle(props) {
+function PageTitle(props) {
   return <h1>{ props.children }</h1>;
 }
+
+export default PageTitle;
