@@ -1,5 +1,12 @@
 import { createContext } from "react";
+import AVLTree from 'avl';
 
-const context = createContext();
+export const data = {
+  nodesNumber: 1,
+  dataTree: new AVLTree()
+};
 
-export default context;
+
+const Context = createContext(null);
+
+export default Context;

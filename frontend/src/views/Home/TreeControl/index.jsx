@@ -1,13 +1,30 @@
-import { useState } from "react"
+import { useContext } from "react"
+import Context from "../../../provider/Context";
 
 export default function TreeControl() {
 
-  const [nodes, setNodes] = useState(1)
+  return <div>aaaa</div>
 
-  return (
-    <div className="card">
-      <h4>Quantidade de Nós</h4>
-      <input type="number" value={nodes} onChange={(e) => setNodes(Math.max(+e.target.value, 1))} />
-    </div>
-  )
+  // const { state, setState } = useContext(Context);
+
+  // const setNodes = function(value) {
+
+  //   const nodeNumber = Math.max(value, 1);
+  //   state.dataTree.clear();
+  //   state.dataTree.load(Array(nodeNumber).fill(0).map((x, i) => i));
+
+  //   setState({
+  //     ...state,
+  //     nodeNumber,
+  //   })
+  // }
+
+
+  // return (
+  //   <div className="card">
+  //     <h4>Quantidade de Nós</h4>
+  //     <input type="number" value={state.nodeNumber || 1}
+  //       onChange={(e) => setNodes(e.target.value) } />
+  //   </div>
+  // )
 }
