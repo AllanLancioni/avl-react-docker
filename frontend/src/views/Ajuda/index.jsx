@@ -1,24 +1,36 @@
+import { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import PageTitle from "../../components/PageTitle";
 import environment from "../../config/environment";
+import './index.css';
 
 function Ajuda() {
 
-  // fetch(`${environment.api}/ajuda`, {mode:'cors'})
-  // .then(function(response) {
-  //   response.text()
-  // })
-  // .catch(function(error) {
-  //   console.error(error)
-  // })
+  const [data, setData] = useState(null)
+
+  useEffect(() => {
+    fetch(`${environment.api}/ajuda`)
+  .then(response => {
+    if(response.ok) {
+      return response.json()
+    }
+    throw response;
+  })
+    .then(data => {
+      setData(data)
+    })
+    .catch(error => {
+      console.error(error)
+    })
+  }, [])
 
   return(
     <div>
       <Header/>
       <div className="container">
         <PageTitle>Ajuda</PageTitle>
-        <span>
-          {/* { text } */}
+        <span className="text-help">
+          { data?.Ajuda }
         </span>
       </div>
 
