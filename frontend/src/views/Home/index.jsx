@@ -2,7 +2,7 @@ import Header from '../../components/Header';
 import PageTitle from '../../components/PageTitle';
 
 import './index.css';
-import TreeAVL from './TreeAvl';
+import TreeAVL from './TreeAVL';
 import TreeControl from './TreeControl';
 
 function InitialPage() {

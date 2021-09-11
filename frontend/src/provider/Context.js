@@ -1,8 +1,9 @@
 import { createContext } from "react";
+import AVLTree from 'avl';
 
 export const data = {
-  number: 1,
-  dataTree: []
+  nodesNumber: 1,
+  dataTree: new AVLTree()
 };
 
 

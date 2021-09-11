@@ -4,13 +4,13 @@ import environment from "../../config/environment";
 
 function Ajuda() {
 
-  const text = fetch(`${environment.api}/ajuda`)
-  .then(function(response) {
-    response.text()
-  })
-  .catch(function(error) {
-    console.error(error)
-  })
+  // fetch(`${environment.api}/ajuda`, {mode:'cors'})
+  // .then(function(response) {
+  //   response.text()
+  // })
+  // .catch(function(error) {
+  //   console.error(error)
+  // })
 
   return(
     <div>
@@ -18,7 +18,7 @@ function Ajuda() {
       <div className="container">
         <PageTitle>Ajuda</PageTitle>
         <span>
-          { text }
+          {/* { text } */}
         </span>
       </div>
 
