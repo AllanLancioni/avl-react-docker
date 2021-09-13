@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import PageTitle from '../../components/PageTitle'
 import './index.css';
 import axios from 'axios';
@@ -7,6 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { toastConfig } from "../../config/toast.config";
 import { useHistory } from "react-router-dom";
+import { Context } from "../../store";
 
 
 const MIN_LENGTH_PASSWORD = 4;
@@ -16,9 +17,11 @@ const EMAIL_PATTERN = /^[-\w]+@trademaster.com.br$/i;
 function Login() {
   const [password, setPassword] = useState('20210913');
   const [email, setEmail] = useState('teste@trademaster.com.br');
+  const { login, logout } = useContext(Context);
   const history = useHistory();
 
   let emailValid = false, passwordValid = false;
+  useEffect(() => logout(), [logout]);
 
   if (EMAIL_PATTERN.test(email))
     emailValid = true;
@@ -31,12 +34,8 @@ function Login() {
     event.preventDefault();
     if (!emailValid || !passwordValid)
       return;
-    console.log({
-      password,
-      email
-    });
     const request = axios.get(`${environment.api}/login?user=${email}&password=${password}`)
-      .then(x => console.log(x.data))
+      .then(res => login(res.data))
       .then(_ => history.push("/"))
       // .catch(err => console.error(err));
     toast.promise(

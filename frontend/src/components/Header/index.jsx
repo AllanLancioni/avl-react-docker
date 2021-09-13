@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { Context } from "../../store";
 
 import './index.css';
 
 function Header() {
+
   return (
     <nav className="header">
 
@@ -15,8 +17,14 @@ function Header() {
         </ul>
 
         <div className="user-info">
-          <span>email@trademaster.com.br</span>
-          <Link to="/login">Sair</Link>
+          <Context.Consumer>
+            { 
+              ({ loginData, logout }) => <>
+                <span>{ `${loginData?.UserName} - ${loginData?.Name}` }</span>
+                <a href onClick={ _ => logout() }>Sair</a>
+              </>
+            }
+          </Context.Consumer>
         </div>
       </div>
     </nav>

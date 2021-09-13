@@ -2,18 +2,24 @@ import './App.css';
 import Login from './views/Login';
 import InitialPage from './views/Home';
 import Help from './views/Help';
-import { Route } from 'react-router';
 import { Store } from './store'
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import ProtectedRoute from './views/ProtectedRoute';
+import NotFound from './views/NotFound';
 
 function App() {
   return (
     <BrowserRouter>
       <Store>
-        <Route exact path="/" component={ InitialPage } />
+        <Switch>
+          <Route exact path="/login" component={Login} />
+          <ProtectedRoute exact path="/" component={InitialPage} />
+          <ProtectedRoute exact path="/help" component={Help} />
+          <Route path="*" component={NotFound} />
+          {/* <Redirect to="/404" /> */}
+
+        </Switch>
       </Store>
-      <Route exact path="/login" component={ Login } />
-      <Route exact path="/help" component={ Help } />
     </BrowserRouter>
   );
 }
