@@ -3,10 +3,9 @@ import PageTitle from '../../components/PageTitle'
 import axios from 'axios';
 import environment from "../../config/environment";
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { toastConfig } from "../../config/toast.config";
-import { useHistory } from "react-router-dom";
 import { Context } from "../../store";
+import 'react-toastify/dist/ReactToastify.css';
 import './index.css';
 
 const MIN_LENGTH_PASSWORD = 4;
@@ -16,11 +15,10 @@ const EMAIL_PATTERN = /^[-\w]+@trademaster.com.br$/i;
 function Login() {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-  const { login, logout } = useContext(Context);
-  const history = useHistory();
+  const { login } = useContext(Context);
 
   let emailValid = false, passwordValid = false;
-  useEffect(() => logout(), [logout]);
+  // useEffect(() => logout(), [logout]);
 
   if (EMAIL_PATTERN.test(email))
     emailValid = true;
@@ -34,7 +32,6 @@ function Login() {
       return;
     const request = axios.get(`${environment.api}/login?user=${email}&password=${password}`)
       .then(res => login(res.data))
-      .then(_ => history.push("/"))
     toast.promise(
       request,
       {

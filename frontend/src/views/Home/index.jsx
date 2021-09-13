@@ -20,9 +20,9 @@ function InitialPage() {
       <div className="container">
         <PageTitle>Gerar Árvore AVL</PageTitle>
         <div className="grid">
-          <TreeControl nodesNumber={ state.nodesNumber } 
-            setNodesNumber={ number => setNodesNumber(dispatch, number) }/>
-          <TreeAVL tree={ state.tree } />
+          <TreeControl nodesNumber={state.nodesNumber}
+            setNodesNumber={number => setNodesNumber(dispatch, number)} />
+          <TreeAVL tree={state.tree} />
         </div>
       </div>
     </div>

@@ -19,6 +19,7 @@ export function Store({ children }) {
   const login = (user) => {
     localStorage.setItem('user', JSON.stringify(user));
     setLoginData(user);
+    console.log(user);
     history.push("/");
   }
 

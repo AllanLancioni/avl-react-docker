@@ -66,3 +66,7 @@ input[type="submit"]:disabled {
   opacity: .75;
   background-color: #ddd;
 }
+
+a {
+  cursor: pointer;
+}
