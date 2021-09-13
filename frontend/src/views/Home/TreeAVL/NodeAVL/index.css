@@ -3,6 +3,7 @@
   text-align: center;
   position: relative;
   min-height: 50px;
+  min-width: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -14,9 +15,10 @@
   background: white;
   z-index: 10;
   position: relative;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
-
-.node::before {
+.node:not(.last)::before {
   content: '';
   position: absolute;
   width: 50%;
@@ -25,7 +27,8 @@
   border-bottom: 2px solid #bbb;
 }
 
-.node::after {
+
+.node:not(.first)::after {
   content: '';
   position: absolute;
   height: 50%;
@@ -36,14 +39,19 @@
 }
 
 
+.node.half::before {
+  width: 25%;
+}
+
+
 .flex {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+  min-width: 50px;
 }
-
 .flex > * {
   flex-grow: 1;
-
+  width: 50%;
 }

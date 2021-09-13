@@ -1,19 +1,19 @@
 import './App.css';
 import Login from './views/Login';
 import InitialPage from './views/Home';
-import Ajuda from './views/Ajuda';
+import Help from './views/Help';
 import { Route } from 'react-router';
-import Provider from './provider/Provider'
+import { Store } from './store'
 import { BrowserRouter } from 'react-router-dom';
 
 function App() {
   return (
     <BrowserRouter>
-      <Provider>
+      <Store>
         <Route exact path="/" component={ InitialPage } />
-      </Provider>
+      </Store>
       <Route exact path="/login" component={ Login } />
-      <Route exact path="/ajuda" component={ Ajuda } />
+      <Route exact path="/help" component={ Help } />
     </BrowserRouter>
   );
 }

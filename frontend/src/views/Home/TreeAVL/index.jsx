@@ -1,21 +1,18 @@
-import { useContext } from "react";
-import Context from "../../../provider/Context";
-import NodeAVL from "./NodeAVL";
+import { useReducer } from "react";
+import { initialState, reducer } from "../../../store";
+import NodeAVL from './NodeAVL';
 
-export default function TreeAVL() {
-  return <div>falho</div>
+export default function TreeAVL({ tree }) {
 
-  // const { state } = useContext(Context);
+  const [state] = useReducer(reducer, initialState);
 
-  // if (!state) return <div>falho</div>
-
-  // console.log(state.dataTree);
-  // return (
-  //   <div className="card">
-  //     Tree
-  //     <div>
-  //       <NodeAVL node={ state.dataTree._root } />
-  //     </div>
-  //   </div>
-  // )
+  console.log('state', state);
+  return (
+    <div className="card">
+      <h3>Gerar Árvore AVL</h3>
+      <div>
+        <NodeAVL node={ tree } />
+      </div>
+    </div>
+  )
 }

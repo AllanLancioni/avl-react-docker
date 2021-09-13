@@ -6,6 +6,7 @@
 
 .grid > * {
   margin: 5px;
+  overflow: auto;
 }
 
 .card {

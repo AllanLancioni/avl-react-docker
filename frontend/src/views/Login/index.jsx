@@ -1,48 +1,82 @@
 import { useState } from "react";
-import Header from "../../components/Header";
+import PageTitle from '../../components/PageTitle'
 import './index.css';
+import axios from 'axios';
+import environment from "../../config/environment";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { toastConfig } from "../../config/toast.config";
+import { useHistory } from "react-router-dom";
+
+
+const MIN_LENGTH_PASSWORD = 4;
+const MAX_LENGTH_PASSWORD = 8;
+const EMAIL_PATTERN = /^[-\w]+@trademaster.com.br$/i;
 
 function Login() {
+  const [password, setPassword] = useState('20210913');
+  const [email, setEmail] = useState('teste@trademaster.com.br');
+  const history = useHistory();
 
-  const [passwordInvalid, setPasswordInvalid] = useState(true);
-  const [emailInvalid, setEmailInvalid] = useState(true);
+  let emailValid = false, passwordValid = false;
 
-  const handleEmail = (event) => {
-    const re = /\w+@trademaster.com.br/;
-    if (re.test(event.target.value)) {
-      setEmailInvalid(false);
-    }
-  };
+  if (EMAIL_PATTERN.test(email))
+    emailValid = true;
 
-  const handlePassword = (event) => {
-    const password = event.target.value;
-    const MIN_LENGTH_PASSWORD = 4;
-    const MAX_LENGTH_PASSWORD = 8;
-    if (password.length >= MIN_LENGTH_PASSWORD && password.length <= MAX_LENGTH_PASSWORD) {
-      setPasswordInvalid(false);
-    }
-  };
+
+  if (password.length >= MIN_LENGTH_PASSWORD && password.length <= MAX_LENGTH_PASSWORD)
+    passwordValid = true;
+
+  function handleForm(event) {
+    event.preventDefault();
+    if (!emailValid || !passwordValid)
+      return;
+    console.log({
+      password,
+      email
+    });
+    const request = axios.get(`${environment.api}/login?user=${email}&password=${password}`)
+      .then(x => console.log(x.data))
+      .then(_ => history.push("/"))
+      // .catch(err => console.error(err));
+    toast.promise(
+      request,
+      {
+        pending: 'Verificando usuário...',
+        success: 'Autenticado!',
+        error: 'Acesso Negado, Verifique se o usuário e senha condizem com credenciais válidas.'
+      },
+      toastConfig
+    )
+  }
 
   return (
-    <div>
-      <Header />
-      <h1>Entrar</h1>
-      <input
-        name="email"
-        type="text"
-        onChange={ handleEmail }
-      >
-      </input>
-      <input
-        type="password"
-        onChange={ handlePassword }
-      >
-      </input>
-      <button
-        disabled={ emailInvalid || passwordInvalid }
-      >
-        Login
-      </button>
+    <div className="page">
+      <form className="login-container card" onSubmit={e => handleForm(e)}>
+        <PageTitle>Bem vindo ao TradeMaster</PageTitle>
+        <label htmlFor="email">Email</label>
+        <input
+          name="email"
+          type="text"
+          value={email}
+          onChange={e => setEmail(e.target.value.trim())}
+        >
+        </input>
+        <label htmlFor="password">Senha</label>
+        <input
+          name="password"
+          type="password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+        >
+        </input>
+        <input type="submit"
+          value="Login"
+          disabled={!emailValid || !passwordValid}
+        />
+      </form>
+      <ToastContainer />
+
     </div>
   )
 }

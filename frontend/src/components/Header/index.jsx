@@ -11,7 +11,7 @@ function Header() {
       <div className="flex-right">
         <ul>
           <li><Link to="/">Home</Link></li>
-          <li><Link to="/ajuda">Ajuda</Link></li>
+          <li><Link to="/help">Ajuda</Link></li>
         </ul>
 
         <div className="user-info">

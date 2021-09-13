@@ -27,14 +27,42 @@ ul {
   padding: 0 1rem;
 }
 
+label {
+  margin-bottom: .5rem;
+}
+
 input[type=text],
+input[type=password],
 input[type=number] {
   border: 1px solid #ccc;
-  border-radius: 3px;
+  border-radius: 1px;
   padding: .5rem;
+  margin-bottom: 1.5rem;
 }
 
 input[type=text]:focus-visible,
+input[type=password]:focus-visible,
 input[type=number]:focus-visible {
-  border: 2px solid blue;
+  border: 1px solid red;
+  outline: none;
 } 
+
+
+input[type="submit"] {
+  border: 1px solid #ccc;
+  border-radius: 1px;
+  padding: .5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+input[type="submit"]:not(:disabled) {
+  border-color: #148898;
+  background-color: #19A9BF;
+  color: white;
+}
+
+input[type="submit"]:disabled {
+  opacity: .75;
+  background-color: #ddd;
+}
